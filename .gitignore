@@ -1,21 +1,34 @@
+# =========================
 # Dependencies
+# =========================
 node_modules/
+.pnpm-store/
 .pnp/
 .pnp.js
 
+# (You use pnpm, so don't accidentally commit other lockfiles)
+package-lock.json
+yarn.lock
+
+# =========================
 # Builds / outputs
+# =========================
 dist/
 build/
 out/
 .next/
 coverage/
 
+# =========================
 # Env / secrets
+# =========================
 .env
 .env.*
 !.env.example
 
+# =========================
 # Logs
+# =========================
 logs/
 *.log
 npm-debug.log*
@@ -23,15 +36,29 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# =========================
 # OS / editor junk
+# =========================
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 *.swp
+*.swo
 
+# =========================
 # Tool caches
+# =========================
 .cache/
 .parcel-cache/
 turbo/
 .eslintcache
+
+# =========================
+# Safety: keep your docs/resources tracked
+# (These lines ensure they are NOT ignored)
+# =========================
+!Documents/**
+!Resources/**
+!src/**
+!.github/**
