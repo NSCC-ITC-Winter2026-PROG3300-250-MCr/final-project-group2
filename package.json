@@ -1,0 +1,11 @@
+{
+  "name": "final-project-group2",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^2.0.0"
+  }
+}
