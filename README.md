@@ -1,4 +1,6 @@
 # **Project Charter**
+> [!NOTE]
+> The full project charter along with approval signature can be found in the Documents directory
 
 **Status**: APPROVED
 
@@ -109,10 +111,40 @@ Responsibilities:
 - Integrate automated testing into workflow
 - Oversee deployment pipeline
 
+### Product Owner
+
+**Amelia MacDonald**
+
+Responsibilities:
+
+- Serve as the primary point of contact between the development team and the client
+- Gather initial business requirements from the client
+- Clarify the client’s goals, priorities, and expectations
+- Translate client needs into clear, actionable requirements
+- Create and maintain the product backlog
+- Prioritize backlog items based on business value
+- Communicate requirement changes to the team promptly
+- Ensure all requirements are well-defined before Sprint planning
+- Validate that completed features meet client expectations
+- Schedule and facilitate client feedback sessions
+- Document client feedback and requested changes
+- Manage scope to prevent uncontrolled feature creep
+- Confirm branding elements (colors, typography, imagery) with the client
+- Approve UI/UX mockups before development begins
+- Ensure business objectives remain aligned throughout development
+- Review Sprint deliverables before presentation to the client
+- Communicate timeline expectations and progress updates to the client
+- Help resolve requirement ambiguities quickly
+- Ensure acceptance criteria are clearly defined for each feature
+- Sign off on features once acceptance criteria are met
+- Assist with preparation for Sprint reviews involving the client
+- Confirm final product readiness before deployment
+- Maintain documentation of all client communications
+
 ### Developers
 
+**Amelia MacDonald – Lead Developer**  
 **Hudson Latimer – Developer**  
-**Amelia MacDonald – Developer**  
 **David Comeau – Developer**  
 **Morgan Perry – Developer**
 
@@ -202,22 +234,3 @@ Milestones:
 |Time constraints|High|Strict scope control|
 |CI/CD configuration delays|Medium|DevOps setup early in Sprint 1|
 |Uneven workload distribution|Medium|PM oversight and Kanban tracking|
-
-## 8. Approval / Authorization to Begin Work
-
-This Project Charter formally authorizes Group 2 to begin Sprint 1 upon instructor approval.
-
-By signing below, the instructor acknowledges review and approval of the project scope, objectives, and structure outlined in this document.
-
-### Instructor Authorization
-
-Instructor Name: **Michael Crocker**
-
-Signature:
-
-
-__________________________________________________________________________
-Date:
-
-
-____________________________________
