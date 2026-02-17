@@ -1,6 +1,6 @@
 # **Project Charter**
 
-**Status**: Pending client/instructor approval 
+**Status**: APPROVED
 
 **PROG3300 – Integrated Project for Programming**  
 **Group 2 – Winter 2026**
