@@ -5,6 +5,7 @@ node_modules/
 .pnpm-store/
 .pnp/
 .pnp.js
+.eslintcache
 
 # (You use pnpm, so don't accidentally commit other lockfiles)
 package-lock.json
