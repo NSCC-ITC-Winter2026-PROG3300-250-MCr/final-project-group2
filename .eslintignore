@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules
 dist
 build
@@ -5,3 +6,30 @@ out
 .next
 coverage
 .eslintrc.*
+=======
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+out/
+coverage/
+
+# Config and system files
+.next/
+.cache/
+
+# Environment files
+.env
+.env.*
+
+# Dependency lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Optional: Specific file types or paths
+*.config.js
+*.d.ts
+>>>>>>> 26c5164da62e98b0853558db132f54d06dc131a9
