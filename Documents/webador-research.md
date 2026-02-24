@@ -1,9 +1,9 @@
 ## Working Within Webador Constraints
 
-**Project:** Tallow Bliss Skincare Website Redesign
-**Team:** Group 2 – PROG3300
-**Client:** Tallow Bliss Skincare (Antigonish, NS)
-**Prepared By:** Shayne McNeil, Project Manager
+**Project:** Tallow Bliss Skincare Website Redesign  
+**Team:** Group 2 – PROG3300  
+**Client:** Tallow Bliss Skincare (Antigonish, NS)  
+**Prepared By:** Shayne McNeil, Project Manager  
 
 # 1. Purpose of This Research
 
