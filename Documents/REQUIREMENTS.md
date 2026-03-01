@@ -12,7 +12,7 @@
 | Version | Approved By     | Revision Date     | Description   | Approved By                                                       | Author          |
 | ------- | --------------- | ----------------- | ------------- | ----------------------------------------------------------------- | --------------- |
 | 1.0.0   | Project Manager | February 17, 2026 | First version | Project Manager, DevOps Engineer, Product Owner, Development Team | Project Manager |
-|         |                 |                   |               |                                                                   |                 |
+| 1.1.0   | Client          | February 28, 2026 | First Version | Requirements reviewed by client and formally finalized            | Amelia MacDonald|
 |         |                 |                   |               |                                                                   |                 |
 |         |                 |                   |               |                                                                   |                 |
 |         |                 |                   |               |                                                                   |                 |
