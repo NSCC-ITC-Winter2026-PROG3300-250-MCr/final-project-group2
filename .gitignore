@@ -21,6 +21,19 @@ out/
 coverage/
 
 # =========================
+# Spring Boot / Maven
+# =========================
+backend/target/
+backend/.idea/
+backend/*.iml
+*.class
+*.log
+
+# Local Spring config
+backend/src/main/resources/application-local.properties
+backend/src/main/resources/application-local.yml
+
+# =========================
 # Env / secrets
 # =========================
 .env
@@ -31,7 +44,6 @@ coverage/
 # Logs
 # =========================
 logs/
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
