@@ -237,3 +237,4 @@ Platform integration challenges | Medium | Early investigation during Sprint 1
 Time constraints | High | Strict scope control
 CI/CD configuration delays | Medium | DevOps setup early in Sprint 1
 Uneven workload distribution | Medium | PM oversight and Kanban tracking
+
