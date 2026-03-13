@@ -28,9 +28,10 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+          
 
       - name: Install
         run: pnpm install --frozen-lockfile
 
       - name: Test
-        run: pnpm test
+        run: pnpm test --if-present
