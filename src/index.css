@@ -2,19 +2,75 @@
 @import "tailwindcss";
 
 @theme {
+  /* Typography */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  
-  --color-brand-cream: #f5f5f0;
-  --color-brand-olive: #5A6B50;
-  --color-brand-olive-dark: #4A5D4E;
-  --color-brand-brown: #A8896C;
-  --color-brand-brown-dark: #8c7056;
-  --color-brand-charcoal: #333333;
-  --color-brand-stone: #E4E3E0;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", serif;
+
+  /* Colors (slightly refined) */
+  --color-brand-cream: #fffaf3;
+  --color-brand-olive: #7a8f5c;
+  --color-brand-olive-dark: #5e6f47;
+  --color-brand-brown: #a67c52;
+  --color-brand-brown-dark: #7a5a3d;
+  --color-brand-charcoal: #2b2b2b;
+  --color-brand-stone: #d6c2a8;
+
+  /* UI Enhancements */
+  --radius-base: 12px;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
+/* Base styling */
 body {
-  background-color: var(--color-brand-cream);
+  font-family: var(--font-sans);
+  background: linear-gradient(
+    180deg,
+    var(--color-brand-cream) 0%,
+    #f7f2ea 100%
+  );
   color: var(--color-brand-charcoal);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings = elegant serif */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--color-brand-brown-dark);
+  letter-spacing: 0.5px;
+}
+
+/* Links */
+a {
+  color: var(--color-brand-olive-dark);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-brand-brown);
+  text-decoration: underline;
+}
+
+/* Card-style container (optional but nice UI touch) */
+.card {
+  background: white;
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-soft);
+  padding: 1.5rem;
+}
+
+/* Buttons */
+.button {
+  background: var(--color-brand-olive);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-base);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background: var(--color-brand-olive-dark);
 }
