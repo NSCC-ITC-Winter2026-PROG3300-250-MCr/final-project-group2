@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -17,24 +17,6 @@ export default function Footer() {
               Nourish your skin naturally with our handcrafted, small-batch skincare products. Made with 100% grass-fed beef tallow and natural ingredients in Antigonish, NS.
             </p>
             <div className="flex items-center gap-4">
-              <a
-                href="https://facebook.com/profile.php?id=61573546477484"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-brand-charcoal/60 hover:text-brand-olive transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="https://instagram.com/tallowbliss1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-brand-charcoal/60 hover:text-brand-olive transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
               <a
                 href="mailto:Tallowbliss_skincare@outlook.com"
                 className="text-brand-charcoal/60 hover:text-brand-olive transition-colors"
