@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Mail, MapPin, Send, Facebook, Instagram } from 'lucide-react';
+import { validateEmail, validateName, validateMessage } from '../validation';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -14,9 +15,25 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
+
+    if (!validateName(formData.name)) {
+      alert('Please enter a valid name (at least 2 characters).');
+      return;
+    }
+
+    if (!validateEmail(formData.email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    if (!validateMessage(formData.message)) {
+      alert('Please enter a message of at least 10 characters.');
+      return;
+    }
+
+    // If all validation passes:
     alert('Thank you for your message. We will get back to you soon!');
     setFormData({ name: '', email: '', message: '' });
   };
