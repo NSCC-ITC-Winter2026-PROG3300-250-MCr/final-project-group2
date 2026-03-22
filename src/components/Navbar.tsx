@@ -21,15 +21,15 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-brand-cream/90 backdrop-blur-md border-b border-brand-charcoal/10">
       {/* Announcement Banner */}
-      <div className="bg-brand-charcoal text-white text-center py-2.5 px-4 text-sm font-medium tracking-wide">
+      <div className="bg-brand-charcoal text-white text-center py-1.5 md:py-2.5 px-4 text-xs md:text-sm font-medium tracking-wide">
         Temporarily closed due to unforeseen circumstances.
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-14 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <span className="font-serif text-2xl md:text-3xl font-bold text-brand-olive-dark tracking-wide uppercase">
+            <span className="font-serif text-xl md:text-3xl font-bold text-brand-olive-dark tracking-wide uppercase">
               Tallow Bliss Skincare
             </span>
           </Link>
@@ -85,13 +85,13 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-brand-cream border-t border-brand-charcoal/10 overflow-hidden"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1 flex flex-col">
+            <div className="px-4 pt-1 pb-3 space-y-1 flex flex-col">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-3 py-4 text-base font-medium uppercase tracking-widest border-b border-brand-charcoal/5 ${
+                  className={`block px-3 py-2.5 text-base font-medium uppercase tracking-widest border-b border-brand-charcoal/5 ${
                     isActive(link.path) ? 'text-brand-olive' : 'text-brand-charcoal/70'
                   }`}
                 >
