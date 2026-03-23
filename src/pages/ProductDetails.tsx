@@ -29,7 +29,14 @@ export default function ProductDetails() {
   const [activeImage, setActiveImage] = useState(product.image);
   const [added, setAdded] = useState(false);
 
+  const selectedOptionData = product.options?.find((opt) => opt.name === selectedOption);
+
+  const isOutOfStock =
+    selectedOptionData?.inStock === false || (!selectedOptionData && product.inStock === false);
+
   const handleAddToCart = () => {
+    if (isOutOfStock) return;
+
     addToCart(product, quantity, selectedOption);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
@@ -49,7 +56,6 @@ export default function ProductDetails() {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Image Gallery */}
           <div className="space-y-4">
             <div className="aspect-square rounded-2xl overflow-hidden bg-brand-stone border border-brand-charcoal/5">
               <motion.img
@@ -80,7 +86,6 @@ export default function ProductDetails() {
             )}
           </div>
 
-          {/* Product Info */}
           <div className="flex flex-col">
             <h1 className="font-serif text-4xl md:text-5xl text-brand-charcoal mb-4">{product.name}</h1>
             <p className="font-serif text-3xl text-brand-olive-dark mb-6">CA${product.price.toFixed(2)}</p>
@@ -88,6 +93,7 @@ export default function ProductDetails() {
             <div className="prose prose-brand text-brand-charcoal/70 font-light leading-relaxed mb-8">
               <p>{product.description}</p>
               <p>Handcrafted in small batches with 100% grass-fed beef tallow and natural ingredients to nourish and protect your skin.</p>
+              <p>{product.warning}</p>
             </div>
 
             <div className="h-px w-full bg-brand-charcoal/10 mb-8"></div>
@@ -102,13 +108,14 @@ export default function ProductDetails() {
                     <button
                       key={opt.name}
                       onClick={() => setSelectedOption(opt.name)}
+                      disabled={opt.inStock === false}
                       className={`px-6 py-3 rounded-md text-sm transition-all duration-300 border ${
                         selectedOption === opt.name
                           ? 'bg-brand-olive text-white border-brand-olive shadow-md'
                           : 'bg-white text-brand-charcoal border-brand-charcoal/10 hover:border-brand-olive/50'
                       }`}
                     >
-                      {opt.name}
+                      {opt.inStock === false ? `${opt.name} - Out of Stock` : opt.name}
                     </button>
                   ))}
                 </div>
@@ -140,14 +147,18 @@ export default function ProductDetails() {
 
             <button
               onClick={handleAddToCart}
-              disabled={added}
+              disabled={added || isOutOfStock}
               className={`w-full py-4 rounded-xl font-medium uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3 shadow-md hover:shadow-lg ${
                 added 
                   ? 'bg-brand-olive-dark text-white' 
                   : 'bg-brand-brown hover:bg-brand-brown-dark text-white'
               }`}
             >
-              {added ? (
+              {isOutOfStock ? (
+                <>
+                  <ShoppingBag size={20} /> Out of Stock
+                </>
+              ) : added ? (
                 <>
                   <Check size={20} /> Added to Cart
                 </>

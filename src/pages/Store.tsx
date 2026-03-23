@@ -11,7 +11,14 @@ function ProductCard({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
+  const selectedOptionData = product.options?.find((opt) => opt.name === selectedOption);
+
+  const isOutOfStock =
+    selectedOptionData?.inStock === false || (!selectedOptionData && product.inStock === false);
+
   const handleAddToCart = () => {
+    if (isOutOfStock) return;
+
     addToCart(product, quantity, selectedOption);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
@@ -37,7 +44,7 @@ function ProductCard({ product }: { product: Product }) {
         <Link to={`/product/${product.id}`}>
           <h2 className="font-serif text-2xl text-brand-charcoal mb-2 hover:text-brand-olive transition-colors">{product.name}</h2>
         </Link>
-        <p className="text-brand-charcoal/60 font-light text-sm mb-6 flex-grow">{product.description}</p>
+        <p className="text-brand-charcoal/60 font-light text-sm mb-6 flex-grow">{product.shortDescription || product.description}</p>
         
         <div className="flex items-end justify-between mb-6">
           <span className="font-serif text-2xl text-brand-olive-dark">CA${product.price.toFixed(2)}</span>
@@ -54,8 +61,8 @@ function ProductCard({ product }: { product: Product }) {
               onChange={(e) => setSelectedOption(e.target.value)}
             >
               {product.options.map((opt) => (
-                <option key={opt.name} value={opt.name}>
-                  {opt.name}
+                <option key={opt.name} value={opt.name} disabled={opt.inStock === false}>
+                  {opt.inStock === false ? `${opt.name} - Out of Stock` : opt.name}
                 </option>
               ))}
             </select>
@@ -87,14 +94,18 @@ function ProductCard({ product }: { product: Product }) {
 
         <button
           onClick={handleAddToCart}
-          disabled={added}
+          disabled={added || isOutOfStock}
           className={`w-full py-3 rounded-md font-medium uppercase tracking-widest text-sm transition-colors duration-300 flex items-center justify-center gap-2 mt-auto ${
             added 
               ? 'bg-brand-olive-dark text-white' 
               : 'bg-brand-olive hover:bg-brand-olive-dark text-white'
           }`}
         >
-          {added ? (
+          {isOutOfStock ? (
+            <>
+              <ShoppingBag size={18} /> Out of Stock
+            </>
+          ) : added ? (
             <>
               <Check size={18} /> Added
             </>
