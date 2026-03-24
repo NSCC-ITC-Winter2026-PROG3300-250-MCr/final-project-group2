@@ -70,7 +70,7 @@ export default function Home() {
             >
               <Link
                 to="/store"
-                className="inline-flex items-center gap-2 bg-brand-olive-dark hover:bg-brand-olive text-white px-8 py-4 rounded-md font-medium uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 bg-brand-olive-dark hover:bg-brand-olive !text-white px-8 py-4 rounded-md font-medium uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
               >
                 Shop Now <ArrowRight size={18} />
               </Link>
