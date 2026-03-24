@@ -5,7 +5,11 @@ import { products, Product } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { ShoppingBag, Plus, Minus, Check } from 'lucide-react';
 
-function ProductCard({ product }: { product: Product }) {
+interface ProductCardProps {
+  product: Product;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
   const [selectedOption, setSelectedOption] = useState(product.options?.[0]?.name || '');
   const [quantity, setQuantity] = useState(1);
@@ -118,7 +122,7 @@ function ProductCard({ product }: { product: Product }) {
       </div>
     </motion.div>
   );
-}
+};
 
 export default function Store() {
   return (
