@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, MapPin, Send, Facebook, Instagram } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
 import { validateEmail, validateName, validateMessage } from '../validation';
 
 export default function Contact() {
@@ -102,29 +102,6 @@ const handleSubmit = (e: React.FormEvent) => {
               </div>
             </div>
 
-            <div className="mt-16">
-              <h3 className="font-serif text-xl text-brand-charcoal mb-6">Follow Us</h3>
-              <div className="flex gap-4">
-                <a
-                  href="https://facebook.com/profile.php?id=61573546477484"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white p-4 rounded-full text-brand-charcoal hover:text-white hover:bg-brand-olive transition-all duration-300 shadow-sm"
-                  aria-label="Facebook"
-                >
-                  <Facebook size={24} strokeWidth={1.5} />
-                </a>
-                <a
-                  href="https://instagram.com/tallowbliss1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white p-4 rounded-full text-brand-charcoal hover:text-white hover:bg-brand-olive transition-all duration-300 shadow-sm"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={24} strokeWidth={1.5} />
-                </a>
-              </div>
-            </div>
           </motion.div>
 
           {/* Contact Form */}
