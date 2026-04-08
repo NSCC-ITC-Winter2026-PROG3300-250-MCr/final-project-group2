@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Droplets, ShieldCheck, Sparkles, ArrowRight, Leaf, Droplet, Hexagon, Flower2 } from 'lucide-react';
+import tallow from '../../assets/ingredients/beef-tallow.jpg';
+import oils from '../../assets/ingredients/organic-oils.jpg';
+import beeswax from '../../assets/ingredients/beeswax.jpg';
+import essential from '../../assets/ingredients/essential-oils.jpg';
 
 const heroImages = [
   "https://primary.jwwb.nl/pexels/67/6738807.jpeg?enable-io=true&fit=bounds&width=1920&height=1920",
@@ -165,10 +169,10 @@ export default function Home() {
 
           <div className="flex flex-wrap justify-center gap-12 md:gap-24">
             {[
-              { name: 'Grass-Fed Tallow', image: 'https://picsum.photos/seed/tallow/200/200' },
-              { name: 'Organic Oils', image: 'https://picsum.photos/seed/oil/200/200' },
-              { name: 'Beeswax', image: 'https://picsum.photos/seed/beeswax/200/200' },
-              { name: 'Essential Oils', image: 'https://picsum.photos/seed/essential/200/200' },
+                { name: 'Grass-Fed Tallow', image: tallow },
+                { name: 'Organic Oils', image: oils },
+                { name: 'Beeswax', image: beeswax },
+                { name: 'Essential Oils', image: essential },
             ].map((ingredient, idx) => (
               <div key={idx} className="flex flex-col items-center gap-6 group">
                 <div className="w-32 h-32 rounded-full overflow-hidden shadow-md border-4 border-white group-hover:border-brand-olive transition-all duration-300">
