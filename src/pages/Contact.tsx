@@ -15,28 +15,39 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (!validateName(formData.name)) {
-      alert('Please enter a valid name (at least 2 characters).');
-      return;
+  if (!validateName(formData.name)) {
+    alert('Please enter a valid name (at least 2 characters).');
+    return;
+  }
+  if (!validateEmail(formData.email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  if (!validateMessage(formData.message)) {
+    alert('Please enter a message of at least 10 characters.');
+    return;
+  }
+
+  try {
+    const res = await fetch('https://formspree.io/f/xbdpbgje', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (res.ok) {
+      alert('Thank you for your message. We will get back to you soon!');
+      setFormData({ name: '', email: '', message: '' });
+    } else {
+      alert('Something went wrong. Please try again.');
     }
-
-    if (!validateEmail(formData.email)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-
-    if (!validateMessage(formData.message)) {
-      alert('Please enter a message of at least 10 characters.');
-      return;
-    }
-
-    // If all validation passes:
-    alert('Thank you for your message. We will get back to you soon!');
-    setFormData({ name: '', email: '', message: '' });
-  };
+  } catch {
+    alert('Network error. Please try again later.');
+  }
+};
 
   return (
     <motion.div
