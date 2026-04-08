@@ -80,7 +80,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="flex items-center border border-brand-charcoal/10 rounded-lg overflow-hidden bg-white w-full">
             <button
               onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              className="p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-stone transition-colors flex-1 flex justify-center"
+              className="p-3 md:p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-stone transition-colors flex-1 flex justify-center"
             >
               <Minus size={16} />
             </button>
@@ -89,7 +89,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </span>
             <button
               onClick={() => setQuantity(quantity + 1)}
-              className="p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-stone transition-colors flex-1 flex justify-center"
+              className="p-3 md:p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-stone transition-colors flex-1 flex justify-center"
             >
               <Plus size={16} />
             </button>
