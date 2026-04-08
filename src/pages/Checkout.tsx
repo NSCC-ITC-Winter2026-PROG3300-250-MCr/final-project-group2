@@ -43,7 +43,7 @@ export default function Checkout() {
             {/* Delivery Mode Toggle */}
             <div>
               <h2 className="font-serif text-2xl text-brand-charcoal mb-6">Fulfillment Method</h2>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <button
                   type="button"
                   onClick={() => setDeliveryMode('delivery')}
