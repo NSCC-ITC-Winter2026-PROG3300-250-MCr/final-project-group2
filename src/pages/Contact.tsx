@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, MapPin, Send, Facebook, Instagram } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
 import { validateEmail, validateName, validateMessage } from '../validation';
 
 export default function Contact() {
@@ -15,28 +15,39 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (!validateName(formData.name)) {
-      alert('Please enter a valid name (at least 2 characters).');
-      return;
+  if (!validateName(formData.name)) {
+    alert('Please enter a valid name (at least 2 characters).');
+    return;
+  }
+  if (!validateEmail(formData.email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  if (!validateMessage(formData.message)) {
+    alert('Please enter a message of at least 10 characters.');
+    return;
+  }
+
+  try {
+    const res = await fetch('https://formspree.io/f/xbdpbgje', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (res.ok) {
+      alert('Thank you for your message. We will get back to you soon!');
+      setFormData({ name: '', email: '', message: '' });
+    } else {
+      alert('Something went wrong. Please try again.');
     }
-
-    if (!validateEmail(formData.email)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-
-    if (!validateMessage(formData.message)) {
-      alert('Please enter a message of at least 10 characters.');
-      return;
-    }
-
-    // If all validation passes:
-    alert('Thank you for your message. We will get back to you soon!');
-    setFormData({ name: '', email: '', message: '' });
-  };
+  } catch {
+    alert('Network error. Please try again later.');
+  }
+};
 
   return (
     <motion.div
@@ -102,29 +113,6 @@ const handleSubmit = (e: React.FormEvent) => {
               </div>
             </div>
 
-            <div className="mt-16">
-              <h3 className="font-serif text-xl text-brand-charcoal mb-6">Follow Us</h3>
-              <div className="flex gap-4">
-                <a
-                  href="https://facebook.com/profile.php?id=61573546477484"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white p-4 rounded-full text-brand-charcoal hover:text-white hover:bg-brand-olive transition-all duration-300 shadow-sm"
-                  aria-label="Facebook"
-                >
-                  <Facebook size={24} strokeWidth={1.5} />
-                </a>
-                <a
-                  href="https://instagram.com/tallowbliss1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white p-4 rounded-full text-brand-charcoal hover:text-white hover:bg-brand-olive transition-all duration-300 shadow-sm"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={24} strokeWidth={1.5} />
-                </a>
-              </div>
-            </div>
           </motion.div>
 
           {/* Contact Form */}

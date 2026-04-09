@@ -41,6 +41,15 @@ h1, h2, h3, h4 {
   letter-spacing: 0.5px;
 }
 
+.text-white h1, .text-white h2 {
+  color: inherit !important;
+}
+/* Hero heading override */
+.hero h1, .hero h2 {
+  color: #fffaf3; 
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
 /* Links */
 a {
   color: var(--color-brand-olive-dark);

@@ -8,6 +8,7 @@ export default function Checkout() {
   const { cartTotal, clearCart } = useCart();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [deliveryMode, setDeliveryMode] = useState<'delivery' | 'pickup'>('delivery');
 
   const taxRate = 0.14;
   const taxAmount = cartTotal * taxRate;
@@ -39,6 +40,35 @@ export default function Checkout() {
 
         <div className="bg-white p-8 rounded-3xl shadow-sm border border-brand-charcoal/5">
           <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Delivery Mode Toggle */}
+            <div>
+              <h2 className="font-serif text-2xl text-brand-charcoal mb-6">Fulfillment Method</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button
+                  type="button"
+                  onClick={() => setDeliveryMode('delivery')}
+                  className={`py-4 rounded-xl border-2 font-medium transition-all duration-200 ${
+                    deliveryMode === 'delivery'
+                      ? 'border-brand-olive bg-brand-olive/10 text-brand-charcoal'
+                      : 'border-brand-charcoal/20 text-brand-charcoal/50 hover:border-brand-charcoal/40'
+                  }`}
+                >
+                  Delivery
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setDeliveryMode('pickup')}
+                  className={`py-4 rounded-xl border-2 font-medium transition-all duration-200 ${
+                    deliveryMode === 'pickup'
+                      ? 'border-brand-olive bg-brand-olive/10 text-brand-charcoal'
+                      : 'border-brand-charcoal/20 text-brand-charcoal/50 hover:border-brand-charcoal/40'
+                  }`}
+                >
+                  Pick Up
+                </button>
+              </div>
+            </div>
+
             {/* Contact Information */}
             <div>
               <h2 className="font-serif text-2xl text-brand-charcoal mb-6">Contact Information</h2>
@@ -70,72 +100,84 @@ export default function Checkout() {
               </div>
             </div>
 
-            {/* Shipping Address */}
-            <div>
-              <h2 className="font-serif text-2xl text-brand-charcoal mb-6">Shipping Address</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="md:col-span-2">
-                  <label htmlFor="address" className="block text-sm font-medium text-brand-charcoal/80 mb-2">
-                    Street Address
-                  </label>
-                  <input
-                    type="text"
-                    id="address"
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-brand-charcoal/20 focus:border-brand-olive focus:ring-1 focus:ring-brand-olive outline-none transition-colors bg-brand-stone/30"
-                    placeholder="123 Main St"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="city" className="block text-sm font-medium text-brand-charcoal/80 mb-2">
-                    City
-                  </label>
-                  <input
-                    type="text"
-                    id="city"
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-brand-charcoal/20 focus:border-brand-olive focus:ring-1 focus:ring-brand-olive outline-none transition-colors bg-brand-stone/30"
-                    placeholder="Toronto"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="province" className="block text-sm font-medium text-brand-charcoal/80 mb-2">
-                    State / Province
-                  </label>
-                  <input
-                    type="text"
-                    id="province"
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-brand-charcoal/20 focus:border-brand-olive focus:ring-1 focus:ring-brand-olive outline-none transition-colors bg-brand-stone/30"
-                    placeholder="ON"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="postal" className="block text-sm font-medium text-brand-charcoal/80 mb-2">
-                    ZIP / Postal Code
-                  </label>
-                  <input
-                    type="text"
-                    id="postal"
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-brand-charcoal/20 focus:border-brand-olive focus:ring-1 focus:ring-brand-olive outline-none transition-colors bg-brand-stone/30"
-                    placeholder="M5V 2N4"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="country" className="block text-sm font-medium text-brand-charcoal/80 mb-2">
-                    Country
-                  </label>
-                  <input
-                    type="text"
-                    id="country"
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-brand-charcoal/20 focus:border-brand-olive focus:ring-1 focus:ring-brand-olive outline-none transition-colors bg-brand-stone/30"
-                    placeholder="Canada"
-                  />
+            {/* Shipping Address — only shown for delivery */}
+            {deliveryMode === 'delivery' && (
+              <div>
+                <h2 className="font-serif text-2xl text-brand-charcoal mb-6">Shipping Address</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="md:col-span-2">
+                    <label htmlFor="address" className="block text-sm font-medium text-brand-charcoal/80 mb-2">
+                      Street Address
+                    </label>
+                    <input
+                      type="text"
+                      id="address"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-brand-charcoal/20 focus:border-brand-olive focus:ring-1 focus:ring-brand-olive outline-none transition-colors bg-brand-stone/30"
+                      placeholder="123 Main St"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="city" className="block text-sm font-medium text-brand-charcoal/80 mb-2">
+                      City
+                    </label>
+                    <input
+                      type="text"
+                      id="city"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-brand-charcoal/20 focus:border-brand-olive focus:ring-1 focus:ring-brand-olive outline-none transition-colors bg-brand-stone/30"
+                      placeholder="Toronto"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="province" className="block text-sm font-medium text-brand-charcoal/80 mb-2">
+                      State / Province
+                    </label>
+                    <input
+                      type="text"
+                      id="province"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-brand-charcoal/20 focus:border-brand-olive focus:ring-1 focus:ring-brand-olive outline-none transition-colors bg-brand-stone/30"
+                      placeholder="ON"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="postal" className="block text-sm font-medium text-brand-charcoal/80 mb-2">
+                      ZIP / Postal Code
+                    </label>
+                    <input
+                      type="text"
+                      id="postal"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-brand-charcoal/20 focus:border-brand-olive focus:ring-1 focus:ring-brand-olive outline-none transition-colors bg-brand-stone/30"
+                      placeholder="M5V 2N4"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="country" className="block text-sm font-medium text-brand-charcoal/80 mb-2">
+                      Country
+                    </label>
+                    <input
+                      type="text"
+                      id="country"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-brand-charcoal/20 focus:border-brand-olive focus:ring-1 focus:ring-brand-olive outline-none transition-colors bg-brand-stone/30"
+                      placeholder="Canada"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+
+            {/* Pickup location note */}
+            {deliveryMode === 'pickup' && (
+              <div className="bg-brand-stone p-6 rounded-2xl border border-brand-charcoal/10">
+                <h2 className="font-serif text-2xl text-brand-charcoal mb-2">Pick Up Location</h2>
+                <p className="text-brand-charcoal/70 text-sm leading-relaxed">
+                  Your order will be ready for pick up in <span className="font-medium text-brand-charcoal">Antigonish, Nova Scotia</span>. We will contact you with further details once your order is confirmed.
+                </p>
+              </div>
+            )}
 
             {/* Order Summary */}
             <div className="bg-brand-stone p-6 rounded-2xl border border-brand-charcoal/5">
