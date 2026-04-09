@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Heart, Users, ShieldCheck } from 'lucide-react';
-import lighthouse from '../../assets/brand/arisaig-lighthouse.jpeg';
+import lighthouse from '../../assets/brand/arisaig-lighthouse.jpg';
 
 export default function About() {
   return (
