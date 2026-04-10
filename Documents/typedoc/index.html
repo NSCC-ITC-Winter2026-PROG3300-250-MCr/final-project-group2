@@ -1,0 +1,295 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>react-example</title><meta name="description" content="Documentation for react-example"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">react-example</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>react-example</h1></div><div class="tsd-panel tsd-typography"><p>Project Charter
+Note</p>
+<p>The full project charter along with approval signature can be found in the Documents directory</p>
+<p>Status: APPROVED</p>
+<p>PROG3300 – Integrated Project for Programming
+Group 2 – Winter 2026</p>
+<hr>
+<h2 id="development" class="tsd-anchor-link">Development<a href="#development" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="frontend-pnpm" class="tsd-anchor-link">Frontend (pnpm)<a href="#frontend-pnpm" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<h4 id="install-dependencies" class="tsd-anchor-link">Install dependencies<a href="#install-dependencies" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>pnpm install</p>
+<h4 id="run-lint" class="tsd-anchor-link">Run lint<a href="#run-lint" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>pnpm lint</p>
+<h4 id="fix-lint-issues-auto-fix" class="tsd-anchor-link">Fix lint issues (auto-fix)<a href="#fix-lint-issues-auto-fix" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>pnpm lint:fix</p>
+<h4 id="run-tests" class="tsd-anchor-link">Run tests<a href="#run-tests" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>pnpm test</p>
+<h4 id="watch-tests-keep-running-while-you-code" class="tsd-anchor-link">Watch tests (keep running while you code)<a href="#watch-tests-keep-running-while-you-code" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>pnpm test:watch</p>
+<h4 id="verify-lint-tests" class="tsd-anchor-link">Verify (lint + tests)<a href="#verify-lint-tests" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>pnpm verify</p>
+<h3 id="backend-spring-boot-maven" class="tsd-anchor-link">Backend (Spring Boot + Maven)<a href="#backend-spring-boot-maven" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<h4 id="run-backend-tests" class="tsd-anchor-link">Run backend tests<a href="#run-backend-tests" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>cd backend
+./mvnw test</p>
+<h4 id="run-the-backend-app" class="tsd-anchor-link">Run the backend app<a href="#run-the-backend-app" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>cd backend
+./mvnw spring-boot:run</p>
+<hr>
+<h2 id="1-project-purpose-background" class="tsd-anchor-link">1. Project Purpose &amp; Background<a href="#1-project-purpose-background" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="project-title" class="tsd-anchor-link">Project Title<a href="#project-title" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Tallow Bliss Skincare Website Redesign &amp; Modernization</p>
+<h3 id="background" class="tsd-anchor-link">Background<a href="#background" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Tallow Bliss Skincare is a small skincare business located in Antigonish, Nova Scotia. The business currently operates with a website built using the Webador platform. While functional, the current website does not fully reflect modern UI/UX standards and presents opportunities for improved design, performance, maintainability, and structured development practices.</p>
+<p>The client has recently experienced a family loss and requires support in redesigning and modernizing her website to better represent her brand while maintaining operational continuity.</p>
+<p>As outlined in the PROG3300 Project Description, the objective of this course project is to build a fully functioning website using proper collaborative software development practices, Agile methodology, CI/CD pipelines, and comprehensive unit testing.</p>
+<p>This project will deliver a professionally redesigned frontend website with meaningful coded functionality beyond static HTML/CSS, while fully implementing collaborative Git workflows and DevOps automation.</p>
+<hr>
+<h2 id="2-objectives-desired-outcomes" class="tsd-anchor-link">2. Objectives / Desired Outcomes<a href="#2-objectives-desired-outcomes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>The primary objectives of this project are:</p>
+<h3 id="business-objectives" class="tsd-anchor-link">Business Objectives<a href="#business-objectives" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li>Deliver a modern, professional website redesign aligned with the client’s brand.</li>
+<li>Improve visual appeal, usability, and accessibility.</li>
+<li>Provide a maintainable, scalable frontend architecture.</li>
+<li>Ensure compatibility with the client’s existing ecommerce/payment infrastructure (Webador or alternative integration).</li>
+<li>Deploy a production-ready site to a hosting platform (e.g., Netlify or equivalent).</li>
+</ul>
+<h3 id="academic-technical-objectives" class="tsd-anchor-link">Academic / Technical Objectives<a href="#academic-technical-objectives" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li>
+<p>Implement Agile development with three 2-week Sprints.</p>
+</li>
+<li>
+<p>Utilize GitHub collaborative workflows with Pull Requests for all changes.</p>
+</li>
+<li>
+<p>Maintain a GitHub Projects Kanban board.</p>
+</li>
+<li>
+<p>Implement CI/CD using GitHub Actions.</p>
+</li>
+<li>
+<p>Write comprehensive unit tests for all core functions.</p>
+</li>
+<li>
+<p>Maintain structured documentation:</p>
+<ul>
+<li>Project Charter</li>
+<li>Requirements Document</li>
+<li>JSDoc-generated documentation</li>
+</ul>
+</li>
+<li>
+<p>Conduct a live deployment demonstration during final presentation.</p>
+</li>
+</ul>
+<hr>
+<h2 id="3-scope-overview" class="tsd-anchor-link">3. Scope Overview<a href="#3-scope-overview" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="in-scope" class="tsd-anchor-link">In Scope<a href="#in-scope" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li>Complete frontend redesign of the Tallow Bliss Skincare website.</li>
+<li>Responsive UI design (desktop, tablet, mobile).</li>
+<li>Implementation of at least one significant coded feature beyond static markup (e.g., dynamic product rendering, filtering, search, contact form validation, cart preview logic, etc.).</li>
+<li>Unit testing for all core JavaScript functions.</li>
+<li>CI/CD workflow using GitHub Actions.</li>
+<li>Deployment to hosting platform.</li>
+<li>Agile tracking via GitHub Projects.</li>
+<li>Documentation and presentation materials.</li>
+</ul>
+<h3 id="potential-enhancements-if-time-permits" class="tsd-anchor-link">Potential Enhancements (If Time Permits)<a href="#potential-enhancements-if-time-permits" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li>Product filtering/search functionality.</li>
+<li>Newsletter signup with validation.</li>
+<li>SEO optimization improvements.</li>
+<li>Performance optimization.</li>
+<li>Analytics integration.</li>
+</ul>
+<h3 id="out-of-scope" class="tsd-anchor-link">Out of Scope<a href="#out-of-scope" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li>Full backend replacement of Webador (unless approved by instructor).</li>
+<li>Payment gateway reimplementation.</li>
+<li>Complex inventory management systems.</li>
+<li>Ongoing post-course maintenance.</li>
+</ul>
+<hr>
+<h2 id="4-key-stakeholders" class="tsd-anchor-link">4. Key Stakeholders<a href="#4-key-stakeholders" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>Role</th>
+<th>Interest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Michael Crocker</td>
+<td>Instructor / Client Representative</td>
+<td>Academic oversight, project approval</td>
+</tr>
+<tr>
+<td>Tallow Bliss Skincare Owner</td>
+<td>Real-World Client</td>
+<td>Website redesign, brand alignment</td>
+</tr>
+<tr>
+<td>Group 2 Members</td>
+<td>Development Team</td>
+<td>Project execution &amp; deliverables</td>
+</tr>
+<tr>
+<td>NSCC PROG3300 Program</td>
+<td>Academic Stakeholder</td>
+<td>Demonstration of Agile &amp; DevOps practices</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-roles-responsibilities" class="tsd-anchor-link">5. Roles &amp; Responsibilities<a href="#5-roles-responsibilities" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="project-manager-shayne-mcneil" class="tsd-anchor-link">Project Manager — Shayne McNeil<a href="#project-manager-shayne-mcneil" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Responsibilities:</p>
+<ul>
+<li>Schedule and facilitate team meetings</li>
+<li>Maintain Project Charter and Requirements Document</li>
+<li>Manage GitHub Projects Kanban Board</li>
+<li>Assign tasks to team members</li>
+<li>Ensure Sprint planning and reviews occur</li>
+<li>Coordinate final presentation materials</li>
+</ul>
+<h3 id="devops-engineer-aaron-hirtle" class="tsd-anchor-link">DevOps Engineer — Aaron Hirtle<a href="#devops-engineer-aaron-hirtle" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Responsibilities:</p>
+<ul>
+<li>Maintain Upstream repository</li>
+<li>Configure GitHub Actions CI/CD workflow</li>
+<li>Enforce Pull Request procedures</li>
+<li>Integrate automated testing into workflow</li>
+<li>Oversee deployment pipeline</li>
+</ul>
+<h3 id="product-owner-amelia-macdonald" class="tsd-anchor-link">Product Owner — Amelia MacDonald<a href="#product-owner-amelia-macdonald" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Responsibilities:</p>
+<ul>
+<li>Serve as the primary point of contact between the development team and the client</li>
+<li>Gather initial business requirements from the client</li>
+<li>Clarify the client’s goals, priorities, and expectations</li>
+<li>Translate client needs into clear, actionable requirements</li>
+<li>Create and maintain the product backlog</li>
+<li>Prioritize backlog items based on business value</li>
+<li>Communicate requirement changes to the team promptly</li>
+<li>Ensure all requirements are well-defined before Sprint planning</li>
+<li>Validate that completed features meet client expectations</li>
+<li>Schedule and facilitate client feedback sessions</li>
+<li>Document client feedback and requested changes</li>
+<li>Manage scope to prevent uncontrolled feature creep</li>
+<li>Confirm branding elements (colors, typography, imagery) with the client</li>
+<li>Approve UI/UX mockups before development begins</li>
+<li>Ensure business objectives remain aligned throughout development</li>
+<li>Review Sprint deliverables before presentation to the client</li>
+<li>Communicate timeline expectations and progress updates to the client</li>
+<li>Help resolve requirement ambiguities quickly</li>
+<li>Ensure acceptance criteria are clearly defined for each feature</li>
+<li>Sign off on features once acceptance criteria are met</li>
+<li>Assist with preparation for Sprint reviews involving the client</li>
+<li>Confirm final product readiness before deployment</li>
+<li>Maintain documentation of all client communications</li>
+</ul>
+<h3 id="developers" class="tsd-anchor-link">Developers<a href="#developers" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li>Amelia MacDonald – Lead Developer</li>
+<li>Hudson Latimer – Developer</li>
+<li>David Comeau – Developer</li>
+<li>Morgan Perry – Developer</li>
+</ul>
+<p>Responsibilities:</p>
+<ul>
+<li>Implement frontend features</li>
+<li>Write unit tests for implemented functionality</li>
+<li>Submit all changes via Pull Requests</li>
+<li>Follow Git collaborative best practices</li>
+<li>Document code using JSDoc</li>
+<li>Participate in Sprint reviews and demos</li>
+</ul>
+<hr>
+<h2 id="6-high-level-timeline-milestones" class="tsd-anchor-link">6. High-Level Timeline &amp; Milestones<a href="#6-high-level-timeline-milestones" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>The project will follow Agile methodology with three 2-week Sprints, as required.</p>
+<h3 id="pre-sprint-phase-week-1" class="tsd-anchor-link">Pre-Sprint Phase (Week 1)<a href="#pre-sprint-phase-week-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li>Project idea approval</li>
+<li>Role assignments</li>
+<li>Upstream access granted</li>
+<li>Project Charter submission</li>
+</ul>
+<h3 id="sprint-1-weeks-23" class="tsd-anchor-link">Sprint 1 (Weeks 2–3)<a href="#sprint-1-weeks-23" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Focus: Foundation &amp; Core Structure</p>
+<p>Milestones:</p>
+<ul>
+<li>Finalize Requirements Document</li>
+<li>Establish project architecture</li>
+<li>Implement base UI layout</li>
+<li>Configure repository structure</li>
+<li>Setup CI/CD pipeline</li>
+<li>Implement initial unit testing framework</li>
+<li>Sprint 1 Review with Instructor</li>
+</ul>
+<h3 id="sprint-2-weeks-45" class="tsd-anchor-link">Sprint 2 (Weeks 4–5)<a href="#sprint-2-weeks-45" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Focus: Core Features &amp; Functionality</p>
+<p>Milestones:</p>
+<ul>
+<li>Implement dynamic coded feature(s)</li>
+<li>Develop responsive design</li>
+<li>Expand test coverage</li>
+<li>Refine UI/UX</li>
+<li>Midpoint deployment preview</li>
+<li>Sprint 2 Review with Instructor</li>
+</ul>
+<h3 id="sprint-3-weeks-67" class="tsd-anchor-link">Sprint 3 (Weeks 6–7)<a href="#sprint-3-weeks-67" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Focus: Refinement, Testing &amp; Deployment</p>
+<p>Milestones:</p>
+<ul>
+<li>Finalize all features</li>
+<li>Complete comprehensive unit tests</li>
+<li>Optimize performance</li>
+<li>Complete documentation</li>
+<li>Final deployment</li>
+<li>Presentation preparation</li>
+<li>Final Presentation &amp; Demonstration</li>
+</ul>
+<hr>
+<h2 id="7-assumptions-constraints-and-risks" class="tsd-anchor-link">7. Assumptions, Constraints, and Risks<a href="#7-assumptions-constraints-and-risks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="assumptions" class="tsd-anchor-link">Assumptions<a href="#assumptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li>Client will provide necessary branding materials (logos, images, product details).</li>
+<li>Webador integration access is available if required.</li>
+<li>Team members will meet regularly and adhere to Agile workflow.</li>
+</ul>
+<h3 id="constraints" class="tsd-anchor-link">Constraints<a href="#constraints" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li>Three 2-week Sprint timeline.</li>
+<li>Academic calendar deadlines.</li>
+<li>Limited scope appropriate for course timeframe.</li>
+<li>Only Project Manager and DevOps Engineer have elevated repository permissions.</li>
+</ul>
+<h3 id="risks" class="tsd-anchor-link">Risks<a href="#risks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform integration challenges</td>
+<td>Medium</td>
+<td>Early investigation during Sprint 1</td>
+</tr>
+<tr>
+<td>Time constraints</td>
+<td>High</td>
+<td>Strict scope control</td>
+</tr>
+<tr>
+<td>CI/CD configuration delays</td>
+<td>Medium</td>
+<td>DevOps setup early in Sprint 1</td>
+</tr>
+<tr>
+<td>Uneven workload distribution</td>
+<td>Medium</td>
+<td>PM oversight and Kanban tracking</td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#development"><span>Development</span></a><ul><li><a href="#frontend-pnpm"><span>Frontend (pnpm)</span></a></li><li><ul><li><a href="#install-dependencies"><span>Install dependencies</span></a></li><li><a href="#run-lint"><span>Run lint</span></a></li><li><a href="#fix-lint-issues-auto-fix"><span>Fix lint issues (auto-<wbr/>fix)</span></a></li><li><a href="#run-tests"><span>Run tests</span></a></li><li><a href="#watch-tests-keep-running-while-you-code"><span>Watch tests (keep running while you code)</span></a></li><li><a href="#verify-lint-tests"><span>Verify (lint + tests)</span></a></li></ul></li><li><a href="#backend-spring-boot-maven"><span>Backend (<wbr/>Spring <wbr/>Boot + <wbr/>Maven)</span></a></li><li><ul><li><a href="#run-backend-tests"><span>Run backend tests</span></a></li><li><a href="#run-the-backend-app"><span>Run the backend app</span></a></li></ul></li></ul><a href="#1-project-purpose-background"><span>1. <wbr/>Project <wbr/>Purpose &amp; <wbr/>Background</span></a><ul><li><a href="#project-title"><span>Project <wbr/>Title</span></a></li><li><a href="#background"><span>Background</span></a></li></ul><a href="#2-objectives-desired-outcomes"><span>2. <wbr/>Objectives / <wbr/>Desired <wbr/>Outcomes</span></a><ul><li><a href="#business-objectives"><span>Business <wbr/>Objectives</span></a></li><li><a href="#academic-technical-objectives"><span>Academic / <wbr/>Technical <wbr/>Objectives</span></a></li></ul><a href="#3-scope-overview"><span>3. <wbr/>Scope <wbr/>Overview</span></a><ul><li><a href="#in-scope"><span>In <wbr/>Scope</span></a></li><li><a href="#potential-enhancements-if-time-permits"><span>Potential <wbr/>Enhancements (<wbr/>If <wbr/>Time <wbr/>Permits)</span></a></li><li><a href="#out-of-scope"><span>Out of <wbr/>Scope</span></a></li></ul><a href="#4-key-stakeholders"><span>4. <wbr/>Key <wbr/>Stakeholders</span></a><a href="#5-roles-responsibilities"><span>5. <wbr/>Roles &amp; <wbr/>Responsibilities</span></a><ul><li><a href="#project-manager-shayne-mcneil"><span>Project <wbr/>Manager — <wbr/>Shayne <wbr/>Mc<wbr/>Neil</span></a></li><li><a href="#devops-engineer-aaron-hirtle"><span>Dev<wbr/>Ops <wbr/>Engineer — <wbr/>Aaron <wbr/>Hirtle</span></a></li><li><a href="#product-owner-amelia-macdonald"><span>Product <wbr/>Owner — <wbr/>Amelia <wbr/>Mac<wbr/>Donald</span></a></li><li><a href="#developers"><span>Developers</span></a></li></ul><a href="#6-high-level-timeline-milestones"><span>6. <wbr/>High-<wbr/>Level <wbr/>Timeline &amp; <wbr/>Milestones</span></a><ul><li><a href="#pre-sprint-phase-week-1"><span>Pre-<wbr/>Sprint <wbr/>Phase (<wbr/>Week 1)</span></a></li><li><a href="#sprint-1-weeks-23"><span>Sprint 1 (<wbr/>Weeks 2–3)</span></a></li><li><a href="#sprint-2-weeks-45"><span>Sprint 2 (<wbr/>Weeks 4–5)</span></a></li><li><a href="#sprint-3-weeks-67"><span>Sprint 3 (<wbr/>Weeks 6–7)</span></a></li></ul><a href="#7-assumptions-constraints-and-risks"><span>7. <wbr/>Assumptions, <wbr/>Constraints, and <wbr/>Risks</span></a><ul><li><a href="#assumptions"><span>Assumptions</span></a></li><li><a href="#constraints"><span>Constraints</span></a></li><li><a href="#risks"><span>Risks</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">react-example</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
