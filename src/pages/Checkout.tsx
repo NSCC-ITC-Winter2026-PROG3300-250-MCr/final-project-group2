@@ -4,16 +4,44 @@ import { motion } from 'motion/react';
 import { ShieldCheck } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
+/**
+ * Checkout page component for Tallow Bliss Skin Care.
+ *
+ * Renders a checkout form that collects contact information and either a
+ * shipping address (for delivery) or displays pickup details (for in-person
+ * collection in Antigonish, NS). Calculates the order total with 14% tax,
+ * simulates payment processing, clears the cart on success, and redirects
+ * to the payment success page.
+ *
+ * @returns {JSX.Element} The rendered Checkout page
+ */
 export default function Checkout() {
   const { cartTotal, clearCart } = useCart();
   const navigate = useNavigate();
+
+  /** Whether the form is currently in a submitting/processing state */
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  /** The selected fulfillment method — either home delivery or local pickup */
   const [deliveryMode, setDeliveryMode] = useState<'delivery' | 'pickup'>('delivery');
 
+  /** Tax rate applied to the cart subtotal (14% to cover HST) */
   const taxRate = 0.14;
+
+  /** Calculated tax amount based on the current cart subtotal */
   const taxAmount = cartTotal * taxRate;
+
+  /** Final order total including subtotal and taxes */
   const finalTotal = cartTotal + taxAmount;
 
+  /**
+   * Handles checkout form submission.
+   * Prevents default form behaviour, sets the submitting state,
+   * simulates a 2-second payment delay, then clears the cart
+   * and navigates the user to the payment success page.
+   *
+   * @param e - The React form submission event
+   */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -40,7 +68,8 @@ export default function Checkout() {
 
         <div className="bg-white p-8 rounded-3xl shadow-sm border border-brand-charcoal/5">
           <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Delivery Mode Toggle */}
+
+            {/* Fulfillment method toggle — switches between delivery and pickup */}
             <div>
               <h2 className="font-serif text-2xl text-brand-charcoal mb-6">Fulfillment Method</h2>
               <div className="grid grid-cols-2 gap-4">
@@ -69,7 +98,7 @@ export default function Checkout() {
               </div>
             </div>
 
-            {/* Contact Information */}
+            {/* Contact information fields — required for all fulfillment methods */}
             <div>
               <h2 className="font-serif text-2xl text-brand-charcoal mb-6">Contact Information</h2>
               <div className="grid grid-cols-1 gap-6">
@@ -100,7 +129,7 @@ export default function Checkout() {
               </div>
             </div>
 
-            {/* Shipping Address — only shown for delivery */}
+            {/* Shipping address fields — only rendered when delivery mode is selected */}
             {deliveryMode === 'delivery' && (
               <div>
                 <h2 className="font-serif text-2xl text-brand-charcoal mb-6">Shipping Address</h2>
@@ -169,7 +198,7 @@ export default function Checkout() {
               </div>
             )}
 
-            {/* Pickup location note */}
+            {/* Pickup location notice — only rendered when pickup mode is selected */}
             {deliveryMode === 'pickup' && (
               <div className="bg-brand-stone p-6 rounded-2xl border border-brand-charcoal/10">
                 <h2 className="font-serif text-2xl text-brand-charcoal mb-2">Pick Up Location</h2>
@@ -179,7 +208,7 @@ export default function Checkout() {
               </div>
             )}
 
-            {/* Order Summary */}
+            {/* Order summary — displays subtotal, tax, and final total */}
             <div className="bg-brand-stone p-6 rounded-2xl border border-brand-charcoal/5">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-brand-charcoal/80">Subtotal</span>
@@ -195,6 +224,7 @@ export default function Checkout() {
               </div>
             </div>
 
+            {/* Submit button — disabled and shows processing state during submission */}
             <button
               type="submit"
               disabled={isSubmitting}
