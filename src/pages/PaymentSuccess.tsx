@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 
+/**
+ * Payment Success page component for Tallow Bliss Skin Care.
+ *
+ * Displayed after a payment has been processed successfully.
+ * Confirms the order to the user and informs them that an email
+ * confirmation with order details will be sent. Provides a link
+ * back to the Home page.
+ *
+ * @returns {JSX.Element} The rendered PaymentSuccess page
+ */
 export default function PaymentSuccess() {
   return (
     <motion.div
@@ -13,6 +23,7 @@ export default function PaymentSuccess() {
       className="py-32 bg-brand-cream min-h-[80vh] flex items-center justify-center"
     >
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Success confirmation card — spring-animated on entry */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
