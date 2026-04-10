@@ -79,7 +79,7 @@ export default function Cart() {
                         </div>
                         <button
                           onClick={() => removeFromCart(item.cartItemId)}
-                          className="text-brand-charcoal/40 hover:text-red-500 transition-colors p-2"
+                          className="text-brand-charcoal/40 hover:text-red-500 transition-colors p-3 md:p-2"
                           aria-label="Remove item"
                         >
                           <Trash2 size={20} />
@@ -90,7 +90,7 @@ export default function Cart() {
                         <div className="flex items-center border border-brand-charcoal/10 rounded-lg overflow-hidden bg-brand-stone/30">
                           <button
                             onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)}
-                            className="p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-charcoal/5 transition-colors"
+                            className="p-3 md:p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-charcoal/5 transition-colors"
                           >
                             <Minus size={16} />
                           </button>
@@ -99,7 +99,7 @@ export default function Cart() {
                           </span>
                           <button
                             onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
-                            className="p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-charcoal/5 transition-colors"
+                            className="p-3 md:p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-charcoal/5 transition-colors"
                           >
                             <Plus size={16} />
                           </button>
