@@ -1,4 +1,4 @@
-Project Charter
+Project Charter :)
 Note
 
 The full project charter along with approval signature can be found in the Documents directory
