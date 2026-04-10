@@ -2,6 +2,15 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Heart, Users, ShieldCheck } from 'lucide-react';
 
+/**
+ * About page component for Tallow Bliss Skin Care.
+ *
+ * Displays the brand's origin story, mission, and core values.
+ * Features animated sections using Framer Motion, including a hero image,
+ * a narrative text block, and a three-column values grid.
+ *
+ * @returns {JSX.Element} The rendered About page
+ */
 export default function About() {
   return (
     <motion.div
@@ -13,6 +22,8 @@ export default function About() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+
+          {/* Hero image with decorative heart icon overlay */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
@@ -33,6 +44,7 @@ export default function About() {
             </div>
           </motion.div>
 
+          {/* Brand story and mission narrative */}
           <motion.div
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
@@ -57,8 +69,10 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* Values Section */}
+        {/* Values Section — three cards highlighting brand pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center mt-32">
+
+          {/* Value card: Small Town Roots */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -75,6 +89,7 @@ export default function About() {
             </p>
           </motion.div>
 
+          {/* Value card: Handcrafted with Love */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -91,6 +106,7 @@ export default function About() {
             </p>
           </motion.div>
 
+          {/* Value card: Clean Beauty */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
