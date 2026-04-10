@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Heart, Users, ShieldCheck } from 'lucide-react';
+import lighthouse from '../../assets/brand/arisaig-lighthouse.jpg';
 
 /**
  * About page component for Tallow Bliss Skin Care.
@@ -32,15 +33,11 @@ export default function About() {
             className="relative"
           >
             <div className="aspect-[4/5] rounded-t-full overflow-hidden border-8 border-white shadow-xl">
-              <img
-                src="https://primary.jwwb.nl/public/z/v/z/temp-raemrvluitpezdrbzzse/polish_20250327_215937612-standard.jpg"
-                alt="Tallow Bliss Skincare"
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="absolute -bottom-8 -right-8 bg-brand-olive text-brand-cream p-8 rounded-full shadow-lg hidden md:block">
-              <Heart size={48} strokeWidth={1.5} />
+            <img
+              src={lighthouse}
+              alt="Tallow Bliss Skincare"
+              className="w-full h-full object-cover object-[center_top]"
+            />
             </div>
           </motion.div>
 

@@ -1,0 +1,47 @@
+# .github/workflows/frontend-ci.yml
+
+name: Frontend - CI Checks
+
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          version: 9
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # CHANGED: moved lint into the main frontend CI workflow
+      - name: Run ESLint
+        run: pnpm lint
+
+      # CHANGED: keep tests in the same workflow so CI proves code quality + behavior
+      - name: Run frontend tests
+        run: pnpm test --if-present
+
+      # CHANGED: build validation is important testing too
+      - name: Run production build
+        run: pnpm run build
