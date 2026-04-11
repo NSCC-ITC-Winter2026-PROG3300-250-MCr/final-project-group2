@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { AlertCircle, ArrowLeft } from 'lucide-react';
 
+/**
+ * Payment Cancelled page component for Tallow Bliss Skin Care.
+ *
+ * Displayed when a user cancels or abandons the payment process.
+ * Confirms that no charges were made and provides a link back
+ * to the cart so the user can resume their purchase at any time.
+ *
+ * @returns {JSX.Element} The rendered PaymentCancelled page
+ */
 export default function PaymentCancelled() {
   return (
     <motion.div
@@ -13,6 +22,7 @@ export default function PaymentCancelled() {
       className="py-32 bg-brand-cream min-h-[80vh] flex items-center justify-center"
     >
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Confirmation card — spring-animated on entry */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}

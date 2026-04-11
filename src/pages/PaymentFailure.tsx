@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { XCircle, ArrowLeft } from 'lucide-react';
 
+/**
+ * Payment Failure page component for Tallow Bliss Skin Care.
+ *
+ * Displayed when a payment attempt is unsuccessful. Informs the user
+ * that their payment could not be processed and suggests checking their
+ * payment details or contacting their bank. Provides links to return
+ * to the cart or reach out to support via the Contact page.
+ *
+ * @returns {JSX.Element} The rendered PaymentFailure page
+ */
 export default function PaymentFailure() {
   return (
     <motion.div
@@ -13,6 +23,7 @@ export default function PaymentFailure() {
       className="py-32 bg-brand-cream min-h-[80vh] flex items-center justify-center"
     >
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Failure confirmation card — spring-animated on entry */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -27,6 +38,7 @@ export default function PaymentFailure() {
             We're sorry, but your payment could not be processed at this time. 
             Please check your payment details and try again, or contact your bank for assistance.
           </p>
+          {/* Action buttons — return to cart or contact support */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/cart"

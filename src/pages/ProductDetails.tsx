@@ -5,6 +5,18 @@ import { ShoppingBag, ArrowLeft, Plus, Minus, Check } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
 
+/**
+ * Product Details page component for Tallow Bliss Skin Care.
+ *
+ * Displays the full detail view for a single product looked up by its
+ * URL parameter ID. Features a main product image with an optional
+ * thumbnail gallery, product description and warnings, variant option
+ * selection, a quantity picker, and an Add to Cart button with brief
+ * confirmation feedback. Renders a not-found state if the product ID
+ * does not match any entry in the product catalogue.
+ *
+ * @returns {JSX.Element} The rendered ProductDetails page, or a not-found message
+ */
 export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -24,16 +36,35 @@ export default function ProductDetails() {
     );
   }
 
+  /** The name of the currently selected product variant option */
   const [selectedOption, setSelectedOption] = useState(product.options?.[0]?.name || '');
+
+  /** The number of units the user intends to add to the cart */
   const [quantity, setQuantity] = useState(1);
+
+  /** The URL of the currently displayed product image */
   const [activeImage, setActiveImage] = useState(product.image);
+
+  /** Whether the item was just added to the cart — drives the brief confirmation state */
   const [added, setAdded] = useState(false);
 
+  /** The full option data object matching the currently selected option name */
   const selectedOptionData = product.options?.find((opt) => opt.name === selectedOption);
 
+  /**
+   * Whether the current product or selected variant is out of stock.
+   * True if the selected option explicitly marks inStock as false,
+   * or if no option is selected and the base product is out of stock.
+   */
   const isOutOfStock =
     selectedOptionData?.inStock === false || (!selectedOptionData && product.inStock === false);
 
+  /**
+   * Handles the Add to Cart button click.
+   * Adds the current product, quantity, and selected option to the cart,
+   * then briefly sets the added confirmation state for 2 seconds.
+   * Does nothing if the product or selected variant is out of stock.
+   */
   const handleAddToCart = () => {
     if (isOutOfStock) return;
 
@@ -56,6 +87,8 @@ export default function ProductDetails() {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+
+          {/* Product image gallery — main image with optional thumbnail row */}
           <div className="space-y-4">
             <div className="aspect-square rounded-2xl overflow-hidden bg-brand-stone border border-brand-charcoal/5">
               <motion.img
@@ -69,6 +102,7 @@ export default function ProductDetails() {
                 referrerPolicy="no-referrer"
               />
             </div>
+            {/* Thumbnail strip — only rendered when the gallery has more than one image */}
             {product.gallery && product.gallery.length > 1 && (
               <div className="grid grid-cols-4 gap-4">
                 {product.gallery.map((img, idx) => (
@@ -86,6 +120,7 @@ export default function ProductDetails() {
             )}
           </div>
 
+          {/* Product information and purchase controls */}
           <div className="flex flex-col">
             <h1 className="font-serif text-4xl md:text-5xl text-brand-charcoal mb-4">{product.name}</h1>
             <p className="font-serif text-3xl text-brand-olive-dark mb-6">CA${product.price.toFixed(2)}</p>
@@ -98,6 +133,7 @@ export default function ProductDetails() {
 
             <div className="h-px w-full bg-brand-charcoal/10 mb-8"></div>
 
+            {/* Variant option selector — only rendered for products with multiple options */}
             {product.options && (
               <div className="mb-8">
                 <label className="block text-sm uppercase tracking-widest text-brand-charcoal/70 mb-3 font-medium">
@@ -122,6 +158,7 @@ export default function ProductDetails() {
               </div>
             )}
 
+            {/* Quantity picker — enforces a minimum of 1 */}
             <div className="mb-8">
               <label className="block text-sm uppercase tracking-widest text-brand-charcoal/70 mb-3 font-medium">
                 Quantity
@@ -145,6 +182,7 @@ export default function ProductDetails() {
               </div>
             </div>
 
+            {/* Add to Cart button — shows out-of-stock or added confirmation states */}
             <button
               onClick={handleAddToCart}
               disabled={added || isOutOfStock}
@@ -169,6 +207,7 @@ export default function ProductDetails() {
               )}
             </button>
             
+            {/* Product trust badges */}
             <div className="mt-8 grid grid-cols-2 gap-4 text-sm text-brand-charcoal/60 font-light">
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-brand-olive"></div>

@@ -5,21 +5,55 @@ import { products, Product } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { ShoppingBag, Plus, Minus, Check } from 'lucide-react';
 
+/**
+ * Props for the ProductCard component.
+ */
 interface ProductCardProps {
+  /** The product data object to display in the card */
   product: Product;
 }
 
+/**
+ * ProductCard component for Tallow Bliss Skin Care.
+ *
+ * Renders an individual product card within the store grid. Displays the
+ * product image (linking to the full detail page), name, short description,
+ * price, an optional variant option selector, a quantity picker, and an
+ * Add to Cart button with brief confirmation feedback. Handles out-of-stock
+ * states for both the base product and individual variants.
+ *
+ * @param {ProductCardProps} props - The product data to render
+ * @returns {JSX.Element} The rendered product card
+ */
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
+
+  /** The name of the currently selected product variant option */
   const [selectedOption, setSelectedOption] = useState(product.options?.[0]?.name || '');
+
+  /** The number of units the user intends to add to the cart */
   const [quantity, setQuantity] = useState(1);
+
+  /** Whether the item was just added to the cart — drives the brief confirmation state */
   const [added, setAdded] = useState(false);
 
+  /** The full option data object matching the currently selected option name */
   const selectedOptionData = product.options?.find((opt) => opt.name === selectedOption);
 
+  /**
+   * Whether the current product or selected variant is out of stock.
+   * True if the selected option explicitly marks inStock as false,
+   * or if no option is selected and the base product is out of stock.
+   */
   const isOutOfStock =
     selectedOptionData?.inStock === false || (!selectedOptionData && product.inStock === false);
 
+  /**
+   * Handles the Add to Cart button click.
+   * Adds the current product, quantity, and selected option to the cart,
+   * then briefly sets the added confirmation state for 2 seconds.
+   * Does nothing if the product or selected variant is out of stock.
+   */
   const handleAddToCart = () => {
     if (isOutOfStock) return;
 
@@ -36,6 +70,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       transition={{ duration: 0.5 }}
       className="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-charcoal/5 group hover:shadow-md transition-shadow duration-300 flex flex-col"
     >
+      {/* Product image — links to the full detail page */}
       <Link to={`/product/${product.id}`} className="relative aspect-square overflow-hidden bg-brand-stone block">
         <img
           src={product.image}
@@ -54,6 +89,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <span className="font-serif text-2xl text-brand-olive-dark">CA${product.price.toFixed(2)}</span>
         </div>
 
+        {/* Variant option dropdown — only rendered for products with multiple options */}
         {product.options && (
           <div className="mb-4">
             <label className="block text-xs uppercase tracking-widest text-brand-charcoal/50 mb-2 font-medium">
@@ -73,6 +109,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
         )}
 
+        {/* Quantity picker — enforces a minimum of 1 */}
         <div className="mb-6">
           <label className="block text-xs uppercase tracking-widest text-brand-charcoal/50 mb-2 font-medium">
             Quantity
@@ -80,7 +117,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="flex items-center border border-brand-charcoal/10 rounded-lg overflow-hidden bg-white w-full">
             <button
               onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              className="p-3 md:p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-stone transition-colors flex-1 flex justify-center"
+              className="p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-stone transition-colors flex-1 flex justify-center"
             >
               <Minus size={16} />
             </button>
@@ -89,13 +126,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </span>
             <button
               onClick={() => setQuantity(quantity + 1)}
-              className="p-3 md:p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-stone transition-colors flex-1 flex justify-center"
+              className="p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-stone transition-colors flex-1 flex justify-center"
             >
               <Plus size={16} />
             </button>
           </div>
         </div>
 
+        {/* Add to Cart button — shows out-of-stock or added confirmation states */}
         <button
           onClick={handleAddToCart}
           disabled={added || isOutOfStock}
@@ -124,6 +162,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   );
 };
 
+/**
+ * Store page component for Tallow Bliss Skin Care.
+ *
+ * Renders the main product listing page with a page header and a
+ * responsive grid of {@link ProductCard} components, one for each
+ * product in the product catalogue.
+ *
+ * @returns {JSX.Element} The rendered Store page
+ */
 export default function Store() {
   return (
     <motion.div
@@ -143,6 +190,7 @@ export default function Store() {
           </p>
         </div>
 
+        {/* Product grid — renders a ProductCard for each item in the catalogue */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />

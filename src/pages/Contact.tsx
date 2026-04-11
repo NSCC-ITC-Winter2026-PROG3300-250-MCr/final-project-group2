@@ -3,51 +3,83 @@ import { motion } from 'motion/react';
 import { Mail, MapPin, Send } from 'lucide-react';
 import { validateEmail, validateName, validateMessage } from '../validation';
 
+/**
+ * Contact page component for Tallow Bliss Skin Care.
+ *
+ * Renders a two-column layout containing brand contact details (email
+ * and an embedded Google Maps location) alongside a contact form.
+ * Form input is validated using the shared validation utilities before
+ * being submitted to Formspree. Displays appropriate alerts on
+ * validation failure, successful submission, or network errors.
+ *
+ * @returns {JSX.Element} The rendered Contact page
+ */
 export default function Contact() {
+  /**
+   * Controlled state for the contact form fields.
+   * @property name - The sender's full name
+   * @property email - The sender's email address
+   * @property message - The message body
+   */
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
 
+  /**
+   * Generic change handler for all contact form inputs and textareas.
+   * Updates the corresponding field in formData state by input name attribute.
+   *
+   * @param e - The change event from an input or textarea element
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  /**
+   * Handles contact form submission.
+   * Validates all fields using the shared validation utilities, then
+   * POSTs the form data to Formspree as JSON. Resets the form on
+   * success, or alerts the user if validation, submission, or network
+   * errors occur.
+   *
+   * @param e - The React form submission event
+   */
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!validateName(formData.name)) {
-    alert('Please enter a valid name (at least 2 characters).');
-    return;
-  }
-  if (!validateEmail(formData.email)) {
-    alert('Please enter a valid email address.');
-    return;
-  }
-  if (!validateMessage(formData.message)) {
-    alert('Please enter a message of at least 10 characters.');
-    return;
-  }
-
-  try {
-    const res = await fetch('https://formspree.io/f/xbdpbgje', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (res.ok) {
-      alert('Thank you for your message. We will get back to you soon!');
-      setFormData({ name: '', email: '', message: '' });
-    } else {
-      alert('Something went wrong. Please try again.');
+    if (!validateName(formData.name)) {
+      alert('Please enter a valid name (at least 2 characters).');
+      return;
     }
-  } catch {
-    alert('Network error. Please try again later.');
-  }
-};
+    if (!validateEmail(formData.email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    if (!validateMessage(formData.message)) {
+      alert('Please enter a message of at least 10 characters.');
+      return;
+    }
+
+    try {
+      const res = await fetch('https://formspree.io/f/xbdpbgje', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        alert('Thank you for your message. We will get back to you soon!');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch {
+      alert('Network error. Please try again later.');
+    }
+  };
 
   return (
     <motion.div
@@ -66,7 +98,8 @@ export default function Contact() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Information */}
+
+          {/* Contact information panel — email link and embedded map */}
           <motion.div
             initial={{ x: -30, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
@@ -76,6 +109,8 @@ export default function Contact() {
           >
             <h2 className="font-serif text-3xl text-brand-charcoal mb-8">Get in Touch</h2>
             <div className="space-y-8">
+
+              {/* Email contact row */}
               <div className="flex items-start gap-4">
                 <div className="bg-white p-3 rounded-full text-brand-olive-dark shadow-sm">
                   <Mail size={24} strokeWidth={1.5} />
@@ -88,6 +123,7 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* Location row with embedded Google Maps iframe */}
               <div className="flex items-start gap-4">
                 <div className="bg-white p-3 rounded-full text-brand-olive-dark shadow-sm">
                   <MapPin size={24} strokeWidth={1.5} />
@@ -112,10 +148,9 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Contact form panel — validated and submitted via Formspree */}
           <motion.div
             initial={{ x: 30, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}

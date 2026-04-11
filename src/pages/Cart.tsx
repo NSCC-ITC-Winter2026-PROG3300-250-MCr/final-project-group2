@@ -4,16 +4,34 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, ShieldCheck } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
+/**
+ * Cart page component for Tallow Bliss Skin Care.
+ *
+ * Displays all items currently in the user's cart, allowing them to
+ * adjust quantities, remove items, and proceed to checkout.
+ * Shows an empty state with a link to the store when no items are present.
+ * Calculates and displays subtotal, tax (14%), and final total in CAD.
+ *
+ * @returns {JSX.Element} The rendered Cart page
+ */
 export default function Cart() {
   const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useCart();
   const navigate = useNavigate();
 
+  /**
+   * Navigates the user to the checkout page.
+   */
   const handleCheckout = () => {
     navigate('/checkout');
   };
 
+  /** Tax rate applied to the cart subtotal (14% to cover HST) */
   const taxRate = 0.14;
+
+  /** Calculated tax amount based on the current cart subtotal */
   const taxAmount = cartTotal * taxRate;
+
+  /** Final order total including subtotal and taxes */
   const finalTotal = cartTotal + taxAmount;
 
   return (
@@ -29,6 +47,7 @@ export default function Cart() {
           <h1 className="font-serif text-5xl md:text-6xl text-brand-charcoal mb-6">Your Cart</h1>
         </div>
 
+        {/* Empty cart state — shown when no items are in the cart */}
         {cart.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-3xl shadow-sm border border-brand-charcoal/5 max-w-3xl mx-auto">
             <div className="bg-brand-stone w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 text-brand-charcoal/30">
@@ -47,7 +66,8 @@ export default function Cart() {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Cart Items */}
+
+            {/* Cart items list — animates items in/out as they are added or removed */}
             <div className="lg:col-span-2 space-y-6">
               <AnimatePresence>
                 {cart.map((item) => (
@@ -77,20 +97,22 @@ export default function Cart() {
                             </p>
                           )}
                         </div>
+                        {/* Remove item button */}
                         <button
                           onClick={() => removeFromCart(item.cartItemId)}
-                          className="text-brand-charcoal/40 hover:text-red-500 transition-colors p-3 md:p-2"
+                          className="text-brand-charcoal/40 hover:text-red-500 transition-colors p-2"
                           aria-label="Remove item"
                         >
                           <Trash2 size={20} />
                         </button>
                       </div>
                       
+                      {/* Quantity controls and line item total */}
                       <div className="flex items-center justify-between mt-auto">
                         <div className="flex items-center border border-brand-charcoal/10 rounded-lg overflow-hidden bg-brand-stone/30">
                           <button
                             onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)}
-                            className="p-3 md:p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-charcoal/5 transition-colors"
+                            className="p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-charcoal/5 transition-colors"
                           >
                             <Minus size={16} />
                           </button>
@@ -99,7 +121,7 @@ export default function Cart() {
                           </span>
                           <button
                             onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
-                            className="p-3 md:p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-charcoal/5 transition-colors"
+                            className="p-2 text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-brand-charcoal/5 transition-colors"
                           >
                             <Plus size={16} />
                           </button>
@@ -114,7 +136,7 @@ export default function Cart() {
               </AnimatePresence>
             </div>
 
-            {/* Order Summary */}
+            {/* Order summary sidebar — sticky panel showing totals and checkout button */}
             <div className="lg:col-span-1">
               <div className="bg-brand-stone p-8 rounded-3xl sticky top-28">
                 <h2 className="font-serif text-3xl text-brand-charcoal mb-8">Order Summary</h2>

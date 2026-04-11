@@ -2,20 +2,37 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Droplets, ShieldCheck, Sparkles, ArrowRight, Leaf, Droplet, Hexagon, Flower2 } from 'lucide-react';
-import tallow from '../../assets/ingredients/beef-tallow.jpg';
-import oils from '../../assets/ingredients/organic-oils.jpg';
-import beeswax from '../../assets/ingredients/beeswax.jpg';
-import essential from '../../assets/ingredients/essential-oils.jpg';
 
+/**
+ * Array of hero background image URLs cycled through the homepage slideshow.
+ * Images are hosted externally and loaded with no-referrer policy.
+ */
 const heroImages = [
   "https://primary.jwwb.nl/pexels/67/6738807.jpeg?enable-io=true&fit=bounds&width=1920&height=1920",
   "https://primary.jwwb.nl/pexels/77/7796749.jpeg?enable-io=true&fit=bounds&width=1920&height=1920",
   "https://primary.jwwb.nl/pexels/49/4938327.jpeg?enable-io=true&fit=bounds&width=1920&height=1920"
 ];
 
+/**
+ * Home page component for Tallow Bliss Skin Care.
+ *
+ * Renders the main landing page, consisting of five sections:
+ * - A full-screen hero with an auto-advancing image slideshow and a Shop Now CTA
+ * - A features bar highlighting key product qualities
+ * - A "Why Choose Tallow" section with benefit cards and supporting imagery
+ * - A brand philosophy quote section
+ * - An ingredients highlight section showcasing core natural ingredients
+ *
+ * @returns {JSX.Element} The rendered Home page
+ */
 export default function Home() {
+  /** Index of the currently displayed hero slide */
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  /**
+   * Sets up an interval to automatically advance the hero slideshow
+   * every 5 seconds. Cleans up the interval on component unmount.
+   */
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
@@ -30,7 +47,7 @@ export default function Home() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section */}
+      {/* Hero section — full-screen slideshow with headline and Shop Now CTA */}
       <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="wait">
@@ -46,6 +63,7 @@ export default function Home() {
               referrerPolicy="no-referrer"
             />
           </AnimatePresence>
+          {/* Gradient overlay to ensure text legibility over the hero image */}
           <div className="absolute inset-0 bg-gradient-to-r from-brand-charcoal/60 to-transparent z-10"></div>
         </div>
 
@@ -83,7 +101,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Bar */}
+      {/* Features bar — three key product selling points displayed in a row */}
       <section className="bg-brand-stone py-8 border-y border-brand-charcoal/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-brand-charcoal/10">
@@ -103,7 +121,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Tallow */}
+      {/* Why Choose Tallow section — benefit cards alongside supporting imagery */}
       <section className="py-24 bg-brand-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto mb-16">
@@ -116,6 +134,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left items-center mt-16">
+            {/* Benefit cards */}
             <div className="order-2 md:order-1 space-y-8">
               <div className="bg-white p-8 rounded-2xl shadow-sm border border-brand-charcoal/5">
                 <h3 className="font-serif text-2xl text-brand-olive-dark mb-4">Deeply Moisturizing</h3>
@@ -130,6 +149,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
+            {/* Supporting imagery grid */}
             <div className="order-1 md:order-2 grid grid-cols-2 gap-4">
               <img src="https://picsum.photos/seed/skincare/800/800" alt="Natural Skincare" className="rounded-2xl w-full h-64 object-cover shadow-md" referrerPolicy="no-referrer" />
               <img src="https://picsum.photos/seed/natural/800/800" alt="Organic Ingredients" className="rounded-2xl w-full h-64 object-cover shadow-md mt-8" referrerPolicy="no-referrer" />
@@ -138,7 +158,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Philosophy Quote */}
+      {/* Philosophy quote section — brand mission statement with botanical background */}
       <section className="py-20 bg-brand-stone relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
            <img src="https://picsum.photos/seed/botanical/1920/1080" alt="Botanical background" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
@@ -155,7 +175,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ingredients Highlight */}
+      {/* Ingredients highlight section — showcases the four core natural ingredients */}
       <section className="py-24 bg-brand-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-16">
@@ -169,10 +189,10 @@ export default function Home() {
 
           <div className="flex flex-wrap justify-center gap-12 md:gap-24">
             {[
-                { name: 'Grass-Fed Tallow', image: tallow },
-                { name: 'Organic Oils', image: oils },
-                { name: 'Beeswax', image: beeswax },
-                { name: 'Essential Oils', image: essential },
+              { name: 'Grass-Fed Tallow', image: 'https://picsum.photos/seed/tallow/200/200' },
+              { name: 'Organic Oils', image: 'https://picsum.photos/seed/oil/200/200' },
+              { name: 'Beeswax', image: 'https://picsum.photos/seed/beeswax/200/200' },
+              { name: 'Essential Oils', image: 'https://picsum.photos/seed/essential/200/200' },
             ].map((ingredient, idx) => (
               <div key={idx} className="flex flex-col items-center gap-6 group">
                 <div className="w-32 h-32 rounded-full overflow-hidden shadow-md border-4 border-white group-hover:border-brand-olive transition-all duration-300">
