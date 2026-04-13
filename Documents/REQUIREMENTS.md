@@ -1,4 +1,4 @@
-## ℹ️ General Info
+## ℹ️ General Information
 
 **Project:** Tallow Bliss Skincare Website Redesign  
 **Course:** PROG3300 – Integrated Project for Programming  
