@@ -20,7 +20,7 @@ import { CartProvider } from './context/CartContext';
 export default function App() {
   return (
     <CartProvider>
-      <Router basename="/">
+      <Router basename="/final-project-group2">
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
